@@ -1,0 +1,23 @@
+name: template-httpie
+on: 
+  push:
+    paths:
+    - 'templates/httpie/*'
+jobs:
+
+  build:
+    name: Build httpie
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Build and push image
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: argotemplate/httpie
+          path: templates/httpie
+          tag_with_ref: true
+          tag_with_sha: true
+          add_git_labels: true
