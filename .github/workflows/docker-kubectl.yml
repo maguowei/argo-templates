@@ -1,12 +1,12 @@
-name: template-httpie
+name: template-kubectl
 on: 
   push:
     paths:
-    - 'templates/httpie/*'
+    - 'dockerfiles/kubectl/*'
 jobs:
 
   build:
-    name: Build httpie
+    name: Build kubectl
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -16,8 +16,8 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: argotemplate/httpie
-          path: templates/httpie
+          repository: argotemplate/kubectl
+          path: dockerfiles/kubectl
           tag_with_ref: true
           tag_with_sha: true
           add_git_labels: true

@@ -1,12 +1,12 @@
-name: template-git
+name: template-aria2
 on: 
   push:
     paths:
-    - 'templates/git/*'
+    - 'dockerfiles/aria2/*'
 jobs:
 
   build:
-    name: Build git
+    name: Build aria2
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -16,8 +16,8 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: argotemplate/git
-          path: templates/git
+          repository: argotemplate/aria2
+          path: dockerfiles/aria2
           tag_with_ref: true
           tag_with_sha: true
           add_git_labels: true
